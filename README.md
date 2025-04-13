@@ -1,3 +1,23 @@
+## 環境安裝
+我這邊是安裝laravel herd(內涵composer)
+```bash
+# clone GitHub 專案
+git clone https://github.com/frank931023/HW4_02.git
+cd HW4_02
+# 安裝 Laravel 所需套件（用 Composer）
+composer install
+# 複製 .env.example 並建立 .env
+cp .env.example .env
+# 生成 Laravel 專案金鑰
+php artisan key:generate
+# 執行資料庫 migration（建表）
+php artisan migrate
+
+# 開啟專案(我是用 herd open)
+herd open
+# 如果沒有herd或著可以用以下試試，這laravel內建的，但我還在看看為什麼我用這個不行
+php artisan serve
+```
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
