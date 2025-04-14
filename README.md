@@ -15,7 +15,7 @@ php artisan migrate
 
 # 開啟專案(我是用 herd open)
 herd open
-# 如果沒有herd或著可以用以下試試，這laravel內建的，但我還在看看為什麼我用這個不行
+# 如果沒有herd或著可以用以下試試，這laravel內建的，但我還在看看為什麼我用這個不行 >> 使用以下這指令需要將使用php版本中的php.ini的variables_order = "EGPCS" 改為 variables_order = "GPCS"
 php artisan serve
 ```
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
