@@ -1,7 +1,13 @@
 <?php
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MemberController;
 
-use Illuminate\Support\Facades\Route;
+// 貼文路由
+Route::resource('posts', PostController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 留言路由
+Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+
+// 會員路由（如果有的話）
+Route::get('members/{member}', [MemberController::class, 'show'])->name('members.show');
