@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 
 // Route::get('/', function () {
@@ -9,4 +10,6 @@ use App\Http\Controllers\PostController;
 //     ]);
 // });
 
-Route::get('/', [PostController::class, 'show']);
+Route::get('/{page_id}', [PostController::class, 'show']);
+
+Route::get('/{page_id}/{post_id}', [CommentController::class, 'show'])->name('comment.show');;

@@ -21,7 +21,7 @@
                                 張貼者：{{ $post->poster->name ?? '未知' }}<br>
                                 留言數：{{ $post->comment_count }}
                             </p>
-                            <a href="#" class="btn btn-primary">查看內容</a>
+                            <a href="{{$post['id']}}" class="btn btn-primary">查看內容</a>
                         </div>
                         <div class="card-footer text-muted">
                             {{ $post->created_at->diffForHumans() }}

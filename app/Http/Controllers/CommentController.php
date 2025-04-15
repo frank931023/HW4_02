@@ -12,10 +12,12 @@ class PostController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    // 顯示所有貼文
-    public function show()
+    // Show comments from specific post
+    public function show($post_id)
     {
-        $posts = Comment::all();
+        $comments = Comment::where('post_id', $post_id)->get();
         return view('posts', compact('posts'));
     }
+
+    
 };

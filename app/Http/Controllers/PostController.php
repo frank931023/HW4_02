@@ -12,10 +12,11 @@ class PostController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    // 顯示所有貼文
-    public function show()
+    // Show all posts
+    public function show($page_id)
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::where('page_id', $page_id)->get();
         return view('posts', compact('posts'));
     }
 };

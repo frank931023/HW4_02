@@ -12,4 +12,16 @@ class Page extends Model
     protected $table = "pages";
 
     protected $fillable = ["title", "post_count"];
+
+    // Pages belong to a member.(one for creator)
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+    // A page has many posts
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

@@ -13,4 +13,16 @@ class Comment extends Model
     protected $table = "comments";
 
     protected $fillable = ["text"];
+
+    // A commment belongs to a member
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+    // A comment belongs to a post
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }

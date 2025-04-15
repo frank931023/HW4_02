@@ -25,7 +25,7 @@ Tables
     6.created_at
 3.posts
     1.id
-    2.page_id
+    2.page_id(FK)
     3.poster_id(FK)(name)
     4.title
     5.comment_count
