@@ -21,15 +21,15 @@ php artisan serve
 
 ## SQLite
 1.安裝查看table的程式 [TablePlus](https://tableplus.com/)
-開啟TablePlus
-新增資料庫連結(介面空白區按右鍵，選擇"new"，再選擇"connection")
+- 開啟TablePlus
+- 新增資料庫連結(介面空白區按右鍵，選擇"new"，再選擇"connection")
 ![新增資料庫連結(介面空白區按右鍵，選擇"new"，再選擇"connection")](./README-Image/TablePlus01.png)
-選擇SQLite後按"create"
+- 選擇SQLite後按"create"
 ![選擇SQLite後按"create"](./README-Image/TablePlus02.png)
-填寫name
-選擇專案下HW4_02/database/database.sqlite作為資料庫路徑(選擇後會顯示絕對路徑)
-![選擇專案下HW4_02/database/database.sqlite作為資料庫路徑(選擇後會顯示絕對路徑)](image.png)
-完成後按下"save"或"connect"皆可!
+- 填寫name
+- 選擇專案下HW4_02/database/database.sqlite作為資料庫路徑(選擇後會顯示絕對路徑)
+![選擇專案下HW4_02/database/database.sqlite作為資料庫路徑](image.png)
+- 完成後按下"save"或"connect"皆可!
 
 2.新增Table
 ```bash
@@ -51,10 +51,7 @@ App\Models\Page::factory(10)->create()
 App\Models\Post::factory(10)->create()
 # Comment 留言
 App\Models\Comment::factory(10)->create()
-
-![refresh與信入REPL](/README-Image/Command.png)
 ```
-
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
