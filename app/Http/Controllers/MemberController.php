@@ -1,15 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Member;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
-class MemberController extends Controller
+
+class PostController extends BaseController
 {
-    // 顯示會員資料
-    public function show($id)
-    {
-        $member = Member::findOrFail($id);
-        return view('members.show', compact('member'));
-    }
-}
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+};

@@ -1,31 +1,21 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
 use App\Models\Comment;
-use App\Models\Post;
-use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class PostController extends BaseController
 {
-    // 儲存留言
-    public function store(Request $request, $postId)
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    // 顯示所有貼文
+    public function show()
     {
-        $request->validate([
-            'text' => 'required|string|max:1000',
-        ]);
-
-        $comment = new Comment([
-            'post_id' => $postId,
-            'commentor_id' => auth()->id(), // 目前用戶ID
-            'text' => $request->text,
-        ]);
-
-        $comment->save();
-
-        // 更新帖子留言數量
-        $post = Post::findOrFail($postId);
-        $post->increment('comment_count');
-
-        return redirect()->route('posts.show', $postId);
+        $posts = Comment::all();
+        return view('posts', compact('posts'));
     }
-}
+};
