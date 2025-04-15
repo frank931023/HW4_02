@@ -28,7 +28,7 @@ php artisan serve
 ![選擇SQLite後按"create"](./README-Image/TablePlus02.png)
 - 填寫name
 - 選擇專案下HW4_02/database/database.sqlite作為資料庫路徑(選擇後會顯示絕對路徑)
-![選擇專案下HW4_02/database/database.sqlite作為資料庫路徑](image.png)
+![選擇專案下HW4_02/database/database.sqlite作為資料庫路徑](./README-Image/TablePlus03.png)
 - 完成後按下"save"或"connect"皆可!
 
 2.新增Table
