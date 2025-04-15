@@ -18,6 +18,43 @@ herd open
 # 如果沒有herd或著可以用以下試試，這laravel內建的，但我還在看看為什麼我用這個不行 >> 使用以下這指令需要將使用php版本中的php.ini的variables_order = "EGPCS" 改為 variables_order = "GPCS"
 php artisan serve
 ```
+
+## SQLite
+1.安裝查看table的程式 [TablePlus](https://tableplus.com/)
+開啟TablePlus
+新增資料庫連結(介面空白區按右鍵，選擇"new"，再選擇"connection")
+![新增資料庫連結(介面空白區按右鍵，選擇"new"，再選擇"connection")](./README-Image/TablePlus01.png)
+選擇SQLite後按"create"
+![選擇SQLite後按"create"](./README-Image/TablePlus02.png)
+填寫name
+選擇專案下HW4_02/database/database.sqlite作為資料庫路徑(選擇後會顯示絕對路徑)
+![選擇專案下HW4_02/database/database.sqlite作為資料庫路徑(選擇後會顯示絕對路徑)](image.png)
+完成後按下"save"或"connect"皆可!
+
+2.新增Table
+```bash
+# 如果沒有新增過資料
+php artisan migrate
+# 如果有新增過資料
+php artisan migrate:fresh
+```
+3.新增假資料
+```bash
+# 進入交互式環境REPL
+php artisan tinker
+# 生成假資料
+# Member 使用者會員
+App\Models\Member::factory(10)->create()
+# Page 討論版
+App\Models\Page::factory(10)->create()
+# Post 討論區
+App\Models\Post::factory(10)->create()
+# Comment 留言
+App\Models\Comment::factory(10)->create()
+
+![refresh與信入REPL](/README-Image/Command.png)
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
