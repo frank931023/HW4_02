@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('page_id')->constrained('pages')->onDelete('cascade');
-            $table->foreignId('poster_id')->constrained('members')->onDelete('cascade');
+            $table->foreignId('poster_id')->constrained('users')->onDelete('cascade');
             $table->string('title');
+            $table->text('content');
             $table->unsignedInteger('comment_count')->default(0);
-            $table->foreignId('mvp_talker_id')->nullable()->constrained('members')->onDelete('set null');
+            $table->foreignId('mvp_talker_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }

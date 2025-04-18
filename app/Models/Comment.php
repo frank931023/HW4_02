@@ -14,10 +14,10 @@ class Comment extends Model
 
     protected $fillable = ["text"];
 
-    // A commment belongs to a member
-    public function member()
+    // A commment belongs to a user
+    public function commentor()
     {
-        return $this->belongsTo(Member::class);
+        return $this->belongsTo(User::class, 'commentor_id');
     }
 
     // A comment belongs to a post

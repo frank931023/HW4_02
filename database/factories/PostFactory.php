@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Member;
+use App\Models\User;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,11 +19,12 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'page_id' => Page::factory(), // 建立一個 Page
-            'poster_id' => Member::factory(), // 建立一個 Member 作為貼文者
-            'title' => $this->faker->sentence(4),
-            'comment_count' => 0, // 一開始為 0，可後續更新
-            'mvp_talker_id' => null, // 可選，有留言後再指派 MVP
+            'page_id' => Page::factory(),
+            'poster_id' => User::factory(),
+            'title' => fake()->sentence(),
+            'content' => fake()->paragraph(3),
+            'comment_count' => 0,
+            'mvp_talker_id' => null,
             'created_at' => now(),
         ];
     }

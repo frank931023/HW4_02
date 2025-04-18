@@ -28,9 +28,10 @@ Tables
     2.page_id(FK)
     3.poster_id(FK)(name)
     4.title
-    5.comment_count
-    6.mvp_talker_id(FK)(name)
-    7.created_at
+    5.contnet
+    6.comment_count
+    7.mvp_talker_id(FK)(name)
+    8.created_at
 4.comments
     1.id
     2.post_id(FK)

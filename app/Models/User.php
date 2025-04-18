@@ -2,30 +2,31 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\MemberFactory> */
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-    protected $table = "members";
+    protected $table = "users";
 
     protected $fillable = ["name", "email","password"];
 
-    // A member has many pages
+    // A user has many pages
     public function pages()
     {
         return $this->hasMany(Page::class);
     }
 
-    // A member has many posts
+    // A user has many posts
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
 
-    // A member has many comments
+    // A user has many comments
     public function comments()
     {
         return $this->hasMany(Comment::class);

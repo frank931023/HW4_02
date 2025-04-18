@@ -16,7 +16,8 @@ class PostController extends BaseController
     public function show($page_id)
     {
         // $posts = Post::all();
-        $posts = Post::where('page_id', $page_id)->get();
+        // $posts = Post::with('poster')->orderBy('created_at', 'desc')->paginate(9);
+        $posts = Post::where('page_id', $page_id)->orderBy('created_at', 'desc')->paginate(9);
         return view('posts', compact('posts'));
     }
 };
