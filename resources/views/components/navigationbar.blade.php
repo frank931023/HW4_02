@@ -8,10 +8,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages">所有版面</a>
+                    <a class="nav-link" href="">所有版面</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users">會員</a>
+                    <a class="nav-link" href="{{ route('posts.show', ['page_id' => 21]) }}">21號留言板</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('comments.show', ['post_id' => 11]) }}">11號討論區</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">會員資料</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">會員擁有留言</a>
                 </li>
             </ul>
         </div>

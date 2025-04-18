@@ -12,19 +12,24 @@ Route::get('/', function(){
     return view('home');
 });
 
-Route::get('/page{page_id}', [PostController::class, 'show']);
+Route::get('/page{page_id}', [PostController::class, 'show'])
+    ->name('posts.show');
 
-Route::get('/page/post{post_id}', [CommentController::class, 'show']);
+Route::get('/page/post{post_id}', [CommentController::class, 'show'])
+    ->name('comments.show');
 
-// 新增留言
-Route::post('/page/post{post_id}/create_comment', function($post_id) {
-
-    dd($post_id, request()->all());
-})->name('comments.store');
-
-Route::post('/page/post{post_id}/create_comment', [CommentController::class, 'create_comment'])
+Route::post('/page/post{post_id}/create_comment', [CommentController::class, 'create'])
     // ->middleware('auth')
-    ->name('comments.store');
+    ->name('comment.create');
+
+Route::delete('/comments/{comment_id}', [CommentController::class, 'delete'])
+    // ->middleware('auth')
+    ->name('comment.delete');
+
+Route::put('/comments/{comment_id}', [CommentController::class, 'update'])
+    ->middleware('auth')    
+    ->name('comment.update');
+    
 
 Route::get('/login', function () {
     return view('home');

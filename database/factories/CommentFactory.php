@@ -22,6 +22,7 @@ class CommentFactory extends Factory
             'post_id' => Post::factory(),
             'commentor_id' => User::factory(),
             'text' => $this->faker->text(200),
+            'created_at' => now(),
         ];
     }
 }
