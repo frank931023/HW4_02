@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Models\Page;
 
-class PageController extends Controller
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class PageController extends BaseController
 {
     // 顯示討論版
     public function pages(Request $request)

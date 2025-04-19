@@ -3,7 +3,7 @@
         <h1 class="mb-4">討論版列表</h1>
     
         <!-- checkbox filter -->
-        <form method="GET" action="{{ route('pages.pages') }}" class="mb-4">
+        <form method="GET" action="{{ route('pages') }}" class="mb-4">
             <div class="d-flex flex-wrap align-items-center gap-2">
                 @foreach ($allTags as $tag)
                     <div class="form-check form-check-inline">
@@ -17,7 +17,7 @@
                     </div>
                 @endforeach
                 <button type="submit" class="btn btn-primary btn-sm ms-3">篩選</button>
-                <a href="{{ route('pages.pages') }}" class="btn btn-outline-secondary btn-sm ms-2">清除</a>
+                <a href="{{ route('pages') }}" class="btn btn-outline-secondary btn-sm ms-2">清除</a>
             </div>
         </form>
     
@@ -40,7 +40,7 @@
                             @endif
                         </div>
     
-                        <a href="{{ route('pages.posts', $page->id) }}" class="btn btn-outline-primary mt-auto">
+                        <a href="{{ route('posts', $page->id) }}" class="btn btn-outline-primary mt-auto">
                             🔎 查看討論區
                         </a>
                     </div>
