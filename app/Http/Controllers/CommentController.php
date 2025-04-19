@@ -14,63 +14,57 @@ class CommentController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    // Show comments from specific post
+    // Show comments with post_id
     public function show($post_id)
     {
         $post = Post::findOrFail($post_id);
-        // $comments = Comment::with('commentor')->paginate(9);
         $comments = Comment::with('commentor')->where('post_id', $post_id)->orderBy('updated_at', 'desc')->paginate(9);
         return view('comments', compact('comments' ,'post'));
     }
 
-    // 儲存留言
+    // Create a new comment
     public function create(Request $request, $post_id)
     {
         $request->validate([
             'text' => 'required|string|max:500',
         ]);
 
-        // // 建立留言
         $comment = new Comment();
+        // auth()->loginUsingId(1);
+        $comment->commentor_id = auth()->id() ?? 1;
         $comment->text = $request->input('text');
         $comment->post_id = $post_id;
-        // $comment->commentor_id = auth()->id();
-        auth()->loginUsingId(1);
-        $comment->commentor_id = auth()->id();// Assume Id = 1
         $comment->save();
-
+        // Update comment_count
         $comment->post->increment('comment_count');
-
+        // Update mvp_talker
         $this->updateMvpTalker($comment->post->id);
 
-        // 重定向回該文章頁面
-        return back()->with('success', '留言已成功送出！');
+        return redirect()->route('comments.show', $comment->post_id)->with('success', '留言已更新');
     }
 
+    // Delete comment
     public function delete($comment_id)
     {
-        // 找到留言
         $comment = Comment::findOrFail($comment_id);
 
-        // 確認是否為本人刪除（或你也可以放開限制）
-        auth()->loginUsingId(1); // fake for id 1
+        // auth()->loginUsingId(1);
+        auth()->id() ?? 1;
         if ($comment->commentor_id !== auth()->id()) {
             return back()->with('error', '你沒有權限刪除這則留言');
         }
 
-        // 刪除留言
         $comment->delete();
 
-        // 更新文章的 comment_count (-1)
+        // Update comment_count
         $comment->post->decrement('comment_count');
-
-        // 更新該文章的 MVP 發言者
+        // Update mvp_talker
         $this->updateMvpTalker($comment->post->id);
 
-        // 回傳成功訊息
         return back()->with('success', '留言已刪除');
     }
 
+    // Update comment
     public function update(Request $request, $comment_id)
     {
         $request->validate([
@@ -91,16 +85,17 @@ class CommentController extends BaseController
         return redirect()->route('comments.show', $comment->post_id)->with('success', '留言已更新');
     }
 
+    // Update mvp_talker_id
     private function updateMvpTalker($post_id)
     {
-        // 計算每個使用者在該文章下的留言數量
+        // Count users' comments
         $topCommenter = Comment::where('post_id', $post_id)
                                 ->selectRaw('commentor_id, count(*) as comment_count')
                                 ->groupBy('commentor_id')
                                 ->orderByDesc('comment_count')
                                 ->first();
 
-        // 如果找到發言次數最多的使用者，更新文章的 MVP
+        // Update mvp_talker in posts table
         if ($topCommenter) {
             $post = Post::findOrFail($post_id);
             $post->mvp_talker_id = $topCommenter->commentor_id;

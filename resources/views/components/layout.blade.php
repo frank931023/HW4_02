@@ -16,7 +16,6 @@
     <main class="container mt-4">
         {{ $slot }}
     </main>
-
     {{-- footer --}}
     <x-footer />
     {{-- Loading boostrap5 JS --}}
