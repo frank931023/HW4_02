@@ -11,7 +11,7 @@
             @foreach ($page->posts as $post)
                 <li class="list-group-item">
                     <h5>{{ $post->title }}</h5>
-                    <p>{{ $post->content }}</p>
+                    <p>{{ Str::limit($post->content, 100, '...') }}</p> <!-- 限制內容顯示長度 -->
                     <!-- 查看更多按鈕導向留言頁面 -->
                     <a href="#" class="btn btn-outline-primary btn-sm">查看更多</a>
                 </li>
