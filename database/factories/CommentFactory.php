@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
  */
-class UserFactory extends Factory
+class CommentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +19,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('password'),
+            'post_id' => Post::factory(),
+            'commentor_id' => User::factory(),
+            'text' => $this->faker->text(200),
             'created_at' => now(),
         ];
     }

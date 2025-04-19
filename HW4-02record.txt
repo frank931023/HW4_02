@@ -1,0 +1,44 @@
+Views
+1.home.blade.php
+2.posts.balde.php
+3.comments.blade.php
+
+
+Models
+1.Member.php
+2.Class.php
+3.Post.php
+4.Comment.php
+
+Tables
+1.members
+    1.id
+    2.name
+    3.email
+    4.password
+    5.created_at
+2.pages
+    1.id
+    2.creator_id(FK)
+    3.title
+    4.post_count
+    6.created_at
+3.posts
+    1.id
+    2.page_id(FK)
+    3.poster_id(FK)(name)
+    4.title
+    5.contnet
+    6.comment_count
+    7.mvp_talker_id(FK)(name)
+    8.created_at
+4.comments
+    1.id
+    2.post_id(FK)
+    3.commentor_id(FK)
+    4.text
+    5.created_at
+    6.updated_at
+
+Controllers
+1.
