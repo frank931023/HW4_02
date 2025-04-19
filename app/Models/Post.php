@@ -20,12 +20,18 @@ class Post extends Model
         return $this->belongsTo(Page::class);
     }
 
-    // Posts belongs to an user.(one for poster, one for mvp_talker.)
+    // Posts belongs to an user.(one for poster, )
     public function poster()
     {
         return $this->belongsTo(User::class, 'poster_id');
     }
 
+    // Posts belongs to an user.(one for mvp_talker, )
+    public function mvp_talker()
+    {
+        return $this->belongsTo(User::class, 'mvp_talker_id');
+    }
+    
     // A post has many comments
     public function comments()
     {

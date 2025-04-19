@@ -1,7 +1,7 @@
 <x-layout title="{{$post->title}}"> 
     <div class="container mt-4">
         {{-- Post title --}}
-        <h2 class="mb-4">《{{ $post->title }}》</h2>
+        <h2 class="mb-4 text-center">{{ $post->title }}</h2>
 
         {{-- Post content --}}
         <div class="mb-4 p-3 border rounded">
@@ -11,6 +11,9 @@
             </p>
             <small class="text-muted">
                 張貼者：{{ $post->poster->name ?? '匿名' }} ｜ {{ $post->created_at->diffForHumans() }}
+            </small><br>
+            <small>
+                最佳發言人：{{ $post->mvp_talker->name ?? '匿名' }}
             </small>
         </div>
 
