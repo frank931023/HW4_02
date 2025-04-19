@@ -10,6 +10,11 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [PageController::class, 'pages'])->name('pages');
 // Route::get('/pages/{id}', [PageController::class, 'posts'])->name('posts');
 
+Route::get('/lo', function () {
+    return view('test1', [
+    ]);
+});
+
 // Post
 Route::get('/page/{page_id}', [PostController::class, 'show']) 
     ->name('posts.show');

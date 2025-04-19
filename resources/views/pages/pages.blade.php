@@ -1,7 +1,6 @@
 <x-layout title="Home">
     <div class="container">
         <h1 class="mb-4">討論版列表</h1>
-    
         <!-- checkbox filter -->
         <form method="GET" action="{{ route('pages') }}" class="mb-4">
             <div class="d-flex flex-wrap align-items-center gap-2">

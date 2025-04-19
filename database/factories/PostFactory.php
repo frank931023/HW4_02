@@ -19,7 +19,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'page_id' => Page::factory(),
+            // 'page_id' => Page::factory(),
+            'page_id' => fake()->numberBetween(1, 5),
             'poster_id' => User::factory(),
             'title' => fake()->sentence(),
             'content' => fake()->paragraph(3),
