@@ -8,7 +8,7 @@ use App\Http\Controllers\AuthController;
 // Home
 // 預設 Page 討論版當首頁
 Route::get('/', [PageController::class, 'pages'])->name('pages');
-Route::get('/pages/{id}', [PageController::class, 'posts'])->name('posts');
+// Route::get('/pages/{id}', [PageController::class, 'posts'])->name('posts');
 
 // Post
 Route::get('/page/{page_id}', [PostController::class, 'show']) 

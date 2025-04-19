@@ -13,6 +13,10 @@ class Page extends Model
 
     protected $fillable = ["title", "post_count"];
 
+    protected $casts = [
+        'tags' => 'array', // tags 自動轉陣列
+    ];
+
     // Pages belong to a user.(one for creator)
     public function user()
     {

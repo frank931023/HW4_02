@@ -43,7 +43,7 @@
                     <small class="text-muted">留言更新於：{{ $comment->updated_at->diffForHumans() }}</small>
                 
                     {{-- Edit and Delete Button --}}
-                    @if ($comment->commentor_id === 1 && request()->get('edit') != $comment->id)
+                    @if ($comment->commentor_id === auth()->id() && request()->get('edit') != $comment->id)
                         <div class="d-flex align-items-center gap-2 mt-2">
                             <a href="{{ request()->url() }}?edit={{ $comment->id }}#comment-{{ $comment->id }}" class="btn btn-sm btn-warning">編輯</a>
                 

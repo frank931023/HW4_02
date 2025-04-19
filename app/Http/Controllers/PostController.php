@@ -26,7 +26,7 @@ class PostController extends BaseController
         $post = new Post();
         $post->page_id = $page_id;
         // Get login user id or just assume id = 1
-        $post->poster_id = auth()->id() ?? 1;
+        $post->poster_id = auth()->id();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->save();
@@ -40,7 +40,7 @@ class PostController extends BaseController
         $post = Post::findOrFail($post_id);
 
         // auth()->loginUsingId(1);
-        $post->poster_id = auth()->id() ?? 1;
+        $post->poster_id = auth()->id();
         if ($post->poster_id !== auth()->id()) {
             return back()->with('error', '你沒有權限刪除這則留言');
         }
@@ -56,7 +56,7 @@ class PostController extends BaseController
         $post = Post::findOrFail($post_id);
 
         // auth()->loginUsingId(1);
-        $post->poster_id = auth()->id() ?? 1;
+        $post->poster_id = auth()->id();
         if ($post->poster_id !== auth()->id()) {
             return back()->with('error', '你沒有權限更新這則貼文');
         }

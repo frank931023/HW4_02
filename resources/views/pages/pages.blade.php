@@ -26,7 +26,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ $page->name }}</h5>
+                        <h5 class="card-title">{{ $page->title }}</h5>
                         <p class="card-text text-muted" style="flex-grow: 1;">
                             {{ $page->description ?? '這個討論版還沒有簡介喔～' }}
                         </p>
@@ -40,7 +40,7 @@
                             @endif
                         </div>
     
-                        <a href="{{ route('posts', $page->id) }}" class="btn btn-outline-primary mt-auto">
+                        <a href="{{ route('posts.show', $page->id) }}" class="btn btn-outline-primary mt-auto">
                             🔎 查看討論區
                         </a>
                     </div>

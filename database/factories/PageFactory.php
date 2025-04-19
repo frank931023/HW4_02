@@ -19,8 +19,9 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
-            'creator_id' => User::factory(), // 自動建立一位會員作為創作者
+            // 'creator_id' => User::factory(), // 自動建立一位會員作為創作者
             'title' => fake()->sentence(3),
+            // 'name' => 
             'post_count' => fake()->numberBetween(0, 20),
             'created_at' => now(),
         ];

@@ -20,7 +20,7 @@
                                 留言數：{{ $post->comment_count }}
                             </p>
                             {{-- Edit mode --}}
-                            @if (request()->get('edit') == $post->id && $post->poster_id === 1)
+                            @if (request()->get('edit') == $post->id && $post->poster_id === auth()->id())
                                 <form method="POST" action="{{ route('post.update', $post->id) }}">
                                     @csrf
                                     @method('PUT')
@@ -40,7 +40,7 @@
                             {{-- Edit, Delete,and View Comments buttons --}}
                             @else
                                 {{-- Check for user_id and auth --}}
-                                @if ($post->poster_id === 1)
+                                @if ($post->poster_id === auth()->id())
                                     <div class="mt-auto">
                                         <div class="d-flex mb-2" class="btn btn-sm btn-warning flex-fill me-1" data-bs-toggle="modal" data-bs-target="#editPostModal"  data-post-id="{{ $post->id }}">
                                             <a href="{{ request()->url() }}?edit={{ $post->id }}" class="btn btn-sm btn-warning flex-fill me-1">

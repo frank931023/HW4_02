@@ -31,7 +31,7 @@ class CommentController extends BaseController
 
         $comment = new Comment();
         // auth()->loginUsingId(1);
-        $comment->commentor_id = auth()->id() ?? 1;
+        $comment->commentor_id = auth()->id();
         $comment->text = $request->input('text');
         $comment->post_id = $post_id;
         $comment->save();
@@ -49,7 +49,7 @@ class CommentController extends BaseController
         $comment = Comment::findOrFail($comment_id);
 
         // auth()->loginUsingId(1);
-        auth()->id() ?? 1;
+        auth()->id();
         if ($comment->commentor_id !== auth()->id()) {
             return back()->with('error', '你沒有權限刪除這則留言');
         }
