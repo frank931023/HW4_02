@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            // 權限
+            $table->string('phone')->nullable();  // 電話
+            $table->string('gender')->nullable(); // 性向
+            $table->json('preferences')->nullable(); // 偏好內容
+            $table->string('avatar')->nullable(); // 大頭照
+            $table->string('role')->default('user'); // 使用者角色
             $table->timestamps();
         });
         

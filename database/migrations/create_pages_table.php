@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
-            $table->string('title');
+            // $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->unsignedInteger('post_count')->default(0);
+            $table->json('tags')->nullable(); // 新增ta
             $table->timestamps();
         });
     }
