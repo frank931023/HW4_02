@@ -10,6 +10,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ route('pages.pages') }}">SD 論壇</a>
+
+            <!-- 使用者圖示 -->
+            <a href="#" class="nav-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png" alt="User" class="rounded-circle" style="width: 32px; height: 32px;">
+            </a>
         </div>
     </nav>
 
