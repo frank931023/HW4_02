@@ -13,7 +13,7 @@
     <x-navigationbar />
 
     {{-- content --}}
-    <main class="container mt-4">
+    <main class="container mt-4" style="min-height: 80vh;">
         {{ $slot }}
     </main>
     {{-- footer --}}
