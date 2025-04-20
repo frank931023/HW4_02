@@ -122,17 +122,4 @@ server {
     }
 
 }
-server {
-    if ($host = sd06.yeahlowflicker.directory) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    listen 80;
-    listen [::]:80;
-    server_name sd06.yeahlowflicker.directory;
-    return 404; # managed by Certbot
-
-
-}
 ```
