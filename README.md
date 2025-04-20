@@ -82,4 +82,57 @@ composer update && composer install
 cp .env.example .env
 php artisan migrate --seed
 php artisan key:generate
-npm run build && sudo php artisan serve --port 80 --host 0.0.0.0
+npm run build
+# Development server
+sudo php artisan serve --port 80 --host 0.0.0.0
+
+```
+
+## Example nginx configuration
+```
+server {
+    server_name sd06.yeahlowflicker.directory;
+    root /var/www/HW4_02;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+
+    index index.php;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+        fastcgi_hide_header X-Powered-By;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+
+}
+server {
+    if ($host = sd06.yeahlowflicker.directory) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    listen [::]:80;
+    server_name sd06.yeahlowflicker.directory;
+    return 404; # managed by Certbot
+
+
+}
+```
