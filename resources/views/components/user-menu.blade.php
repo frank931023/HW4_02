@@ -2,7 +2,7 @@
 <div class="d-flex align-items-center">
     @guest
         {{-- 未登入：登入與註冊按鈕 --}}
-        <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">登入</a>
+        <a href="{{ route('login') }}" class="btn btn-secondary me-2 ">登入</a>
         <a href="{{ route('register') }}" class="btn btn-primary">註冊</a>
     @else
         {{-- 已登入：使用者大頭照與下拉選單 --}}
