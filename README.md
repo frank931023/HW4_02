@@ -69,3 +69,17 @@ App\Models\Post::factory(10)->create()
 # Comment 留言
 App\Models\Comment::factory(10)->create()
 ```
+
+# Deployment
+```bash
+/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
+apt install php8.3-xml php8.3-sqlite3 composer npm -y
+composer global require laravel/installer
+sudo apt purge apache2
+git clone https://github.com/frank931023/HW4_02
+cd HW4_02
+composer update && composer install
+cp .env.example .env
+php artisan migrate --seed
+php artisan key:generate
+npm run build && sudo php artisan serve --port 80 --host 0.0.0.0
