@@ -76,13 +76,17 @@ App\Models\Comment::factory(10)->create()
 apt install php8.3-xml php8.3-sqlite3 composer npm -y
 composer global require laravel/installer
 sudo apt purge apache2
+
+cd /var/www
 git clone https://github.com/frank931023/HW4_02
 cd HW4_02
+
 composer update && composer install
 cp .env.example .env
 php artisan migrate --seed
 php artisan key:generate
 npm run build
+sudo chmod -R a=rwx /var/www/HW4_02
 # Development server
 sudo php artisan serve --port 80 --host 0.0.0.0
 
@@ -92,7 +96,7 @@ sudo php artisan serve --port 80 --host 0.0.0.0
 ```
 server {
     server_name sd06.yeahlowflicker.directory;
-    root /var/www/HW4_02;
+    root /var/www/HW4_02/public;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options "nosniff";
@@ -120,6 +124,112 @@ server {
     location ~ /\.(?!well-known).* {
         deny all;
     }
+
+}
+```
+
+### With SSL
+```server {
+    server_name sd06.yeahlowflicker.directory;
+    root /var/www/HW4_02/public;
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+
+    index index.php;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+        fastcgi_hide_header X-Powered-By;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sd06.yeahlowflicker.directory/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sd06.yeahlowflicker.directory/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = sd06.yeahlowflicker.directory) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    listen [::]:80;
+    server_name sd06.yeahlowflicker.directory 140.115.197.241;
+    root /var/www/HW4_02/public;
+    add_header X-Frame-Options "SAMEORIGIN";
+
+    add_header X-Content-Type-Options "nosniff";
+
+
+
+    index index.php;
+
+
+
+    charset utf-8;
+
+
+
+    location / {
+
+        try_files $uri $uri/ /index.php?$query_string;
+
+    }
+
+
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+
+
+    error_page 404 /index.php;
+
+
+
+    location ~ ^/index\.php(/|$) {
+
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+
+        include fastcgi_params;
+
+        fastcgi_hide_header X-Powered-By;
+
+    }
+
+
+
+    location ~ /\.(?!well-known).* {
+
+        deny all;
+
+    }
+    # return 404; # managed by Certbot
+
 
 }
 ```
