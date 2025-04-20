@@ -4,14 +4,23 @@
 # clone GitHub 專案
 git clone https://github.com/frank931023/HW4_02.git
 cd HW4_02
+
 # 安裝 Laravel 所需套件（用 Composer）
 composer install
 # 複製 .env.example 並建立 .env
 cp .env.example .env
 # 生成 Laravel 專案金鑰
 php artisan key:generate
+
 # 執行資料庫 migration（建表）
-php artisan migrate
+# 還未建過資料
+php artisan migrate --seed
+# 如果已經建立過資料
+php artisan migrate:fresh --seed
+
+# 引入bootstrap
+npm install
+npm run build
 
 # 開啟專案(我是用 herd open)
 herd open
