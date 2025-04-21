@@ -73,9 +73,10 @@ App\Models\Comment::factory(10)->create()
 # Deployment
 ```bash
 /bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
-apt install php8.3-xml php8.3-sqlite3 composer npm -y
+sudo apt install php8.3-xml php8.3-sqlite3 composer npm -y
 composer global require laravel/installer
-sudo apt purge apache2
+sudo apt purge apache2 -y
+sudo apt install nginx -y
 
 cd /var/www
 git clone https://github.com/frank931023/HW4_02
