@@ -129,6 +129,16 @@ server {
 ```
 
 ### With SSL
+
+Enable the configuration above then use certbot to get let's encrypt ssl certificate
+```bash
+sudo snap install cerbot --classic
+certbot --nginx
+# Follow the instruction to generate ssl certificate
+```
+
+(Optional) Edit the updated configuration to serve it via direct ip connection as well
+
 ```server {
     server_name sd06.yeahlowflicker.directory;
     root /var/www/HW4_02/public;
