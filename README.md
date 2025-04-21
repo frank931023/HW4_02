@@ -1,10 +1,10 @@
 ## 專案分工
-| 成員 | 分工 |
-|--------|--------|
-| 魏仁祥  | 登入<br>註冊  |
-| 謝曉琪  | 總版面filter  |
-| 葉羿君  | 貼文CRUD<br>留言CRUD  |
-| 李宥寬  | 遠端部屬教頭 |
+| 成員 | 分工 | 網站連結 | 部屬完成 |
+|--------|--------|--------|--------|
+| 魏仁祥  | 登入<br>註冊  | [sd05](https://sd05.yeahlowflicker.directory/) | ✅ |
+| 謝曉琪  | 總版面filter  | [sd07](https://sd07.yeahlowflicker.directory/) | ✅ |
+| 葉羿君  | 貼文CRUD<br>留言CRUD  | [sd04](https://sd04.yeahlowflicker.directory/) | ✅ |
+| 李宥寬  | 遠端部屬總教頭 | [sd06](https://sd06.yeahlowflicker.directory/) | ✅ |
 
 ## 環境安裝
 我這邊是安裝laravel herd(內涵composer)
